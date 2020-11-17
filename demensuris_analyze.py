@@ -83,6 +83,16 @@ def enhanced_afinn(word):
     else:
         return float(total_afinn_score/total_scored_words)
 
+def print_synonyms_and_antonyms(word):
+    synonyms = []
+    antonyms = []
+    for syn in wordnet.synsets(word):
+        for l in syn.lemmas():
+            synonyms.append(l.name())
+            if l.antonyms():
+                antonyms.append(l.antonyms()[0].name())
+    print("Synonyms: " + str(synonyms) + '\n')
+    print("Antonyms: " + str(antonyms) + '\n')
 
 def main():
     # analyze_text('aquila.txt', 'aquila.csv')
