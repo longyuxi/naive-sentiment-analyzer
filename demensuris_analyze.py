@@ -27,11 +27,12 @@ def enhanced_analyze_text(text_file, output_file):
     data = fp.read()
 
     output_csv = open(output_file, 'w', encoding='utf8')
-    output_csv.write('Sentence,AFINN Score of Sentence,Sentence Word Count,Total AFINN Score\n')
+    output_csv.write('Sentence,AFINN Score of Sentence,Sentence Word Count,Total AFINN Score,Total Words\n')
     afinnarray = []
     sentences = tokenizer.tokenize(data)
     count = 0
     total_afinn_score = 0
+    total_number_of_words = 0
     for s in sentences:
         count += 1
         # print('-' * 10 + s + '\n')
@@ -44,8 +45,9 @@ def enhanced_analyze_text(text_file, output_file):
                 sentence_score += afinn.score(w)
         
         total_afinn_score += sentence_score
+        total_number_of_words += len(words)
         output_csv.write(','.join((str(count), str(sentence_score), str(len(words)), \
-            str(total_afinn_score))) + '\n')
+            str(total_afinn_score), str(total_number_of_words))) + '\n')
         # print('|'.join((str(sentence_score), s)))
 
     output_csv.close()
