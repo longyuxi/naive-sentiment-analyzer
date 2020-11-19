@@ -23,7 +23,7 @@ def analyze_text(text_file, output_file):
     output_csv.close()
 
 def enhanced_analyze_text(text_file, output_file):
-    fp = open(text_file, 'r', encoding="latin-1")
+    fp = open(text_file, 'r', encoding="utf8")
     data = fp.read()
 
     output_csv = open(output_file, 'w', encoding='utf8')
@@ -101,7 +101,7 @@ def print_sentence_by_number(text_file, sentence_number):
         print(sentences[sentence_number - 1])
 
 def find_pattern(text_file, pattern):
-    with open(text_file, 'r', encoding="latin-1") as fp:
+    with open(text_file, 'r', encoding="utf-8") as fp:
         data = fp.read()
         sentences = tokenizer.tokenize(data)
         for idx, s in enumerate(sentences):
