@@ -94,11 +94,20 @@ def print_synonyms_and_antonyms(word):
     print("Synonyms: " + str(synonyms) + '\n')
     print("Antonyms: " + str(antonyms) + '\n')
 
-def print_sentence(text_file, sentence_number):
-    with open(text_file, 'r', encoding="latin-1") as fp:
+def print_sentence_by_number(text_file, sentence_number):
+    with open(text_file, 'r', encoding="utf8") as fp:
         data = fp.read()
         sentences = tokenizer.tokenize(data)
         print(sentences[sentence_number - 1])
+
+def find_pattern(text_file, pattern):
+    with open(text_file, 'r', encoding="latin-1") as fp:
+        data = fp.read()
+        sentences = tokenizer.tokenize(data)
+        for idx, s in enumerate(sentences):
+            if pattern in s:
+                print("sentence {0}: {1}".format(idx, s))
+
 
 def main():
     # analyze_text('aquila.txt', 'aquila.csv')
