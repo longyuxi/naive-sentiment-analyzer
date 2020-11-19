@@ -94,6 +94,12 @@ def print_synonyms_and_antonyms(word):
     print("Synonyms: " + str(synonyms) + '\n')
     print("Antonyms: " + str(antonyms) + '\n')
 
+def print_sentence(text_file, sentence_number):
+    with open(text_file, 'r', encoding="latin-1") as fp:
+        data = fp.read()
+        sentences = tokenizer.tokenize(data)
+        print(sentences[sentence_number - 1])
+
 def main():
     # analyze_text('aquila.txt', 'aquila.csv')
     # analyze_text('symmachus.txt', 'symmachus.csv')
